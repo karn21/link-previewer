@@ -13,7 +13,15 @@ class PreviewView(View):
   def post(self,request):
     url = json.loads(request.body.decode('utf-8'))
     webpage = urlopen(url['url']).read()
-    print(url['url'])
+    soup = BeautifulSoup(webpage, "lxml")
+    for tag in soup.find_all("meta"):
+      if tag.get('property'):
+        print(tag.get('property'))
+      if tag.get('name'):
+        print(tag.get('name'))
+      
+    title = soup.find("meta", property="og:title")
+    print(title)
     dict = {
         'name':"Karan",
         'age':19
