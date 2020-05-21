@@ -9,6 +9,9 @@ pylint = "*"
 [packages]
 django = "*"
 whitenoise = "*"
+beautifulsoup4 = "*"
+djangorestframework = "*"
+lxml = "*"
 
 [requires]
 python_version = "3.6"
