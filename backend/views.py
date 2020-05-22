@@ -12,19 +12,24 @@ index = never_cache(TemplateView.as_view(template_name="index.html"))
 class PreviewView(View):
   def post(self,request):
     url = json.loads(request.body.decode('utf-8'))
-    webpage = urlopen(url['url']).read()
+    try:
+      webpage = urlopen(url['url']).read()
+    except:
+      return JsonResponse({"error":"Check your url and try again."})
     soup = BeautifulSoup(webpage, "lxml")
+    count = 0
+    tags = {}
     for tag in soup.find_all("meta"):
-      if tag.get('property'):
+      count += 1
+      og_property = tag.get('property')
+      og_name = tag.get('name')
+      if og_property:
+        tags[og_property] = tag.get('content')
         print(tag.get('property'))
-      if tag.get('name'):
+      if og_name:
+        tags[og_name] = tag.get('content')
         print(tag.get('name'))
-      
-    title = soup.find("meta", property="og:title")
-    print(title)
-    dict = {
-        'name':"Karan",
-        'age':19
-    }
-    return JsonResponse(dict)
+    print(count, " tags")
+    print(type(tags))
+    return JsonResponse(tags)
 
