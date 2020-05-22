@@ -17,19 +17,18 @@ class PreviewView(View):
     except:
       return JsonResponse({"error":"Check your url and try again."})
     soup = BeautifulSoup(webpage, "lxml")
-    count = 0
+    meta_tags = list(soup.find_all("meta"))
+    meta_tags_list = []
+    for tag in meta_tags:
+      meta_tags_list.append(str(tag))
     tags = {}
-    for tag in soup.find_all("meta"):
-      count += 1
+    tags['meta_tags'] = meta_tags_list
+    for tag in meta_tags:
       og_property = tag.get('property')
       og_name = tag.get('name')
       if og_property:
         tags[og_property] = tag.get('content')
-        print(tag.get('property'))
       if og_name:
         tags[og_name] = tag.get('content')
-        print(tag.get('name'))
-    print(count, " tags")
-    print(type(tags))
     return JsonResponse(tags)
 
