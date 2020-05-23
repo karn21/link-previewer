@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./main.css";
+import Skeleton from "./skeleton/Skeleton";
 
 export class Main extends Component {
   state = {
     url: "",
+    loading: false,
+    data: "",
   };
 
   handleChange = (e) => {
@@ -14,6 +18,9 @@ export class Main extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.setState({
+      loading: true,
+    });
     const config = {
       headers: {
         "content-type": "application/json",
@@ -22,10 +29,14 @@ export class Main extends Component {
     const data = {
       url: this.state.url,
     };
-    console.log(document.cookie, "hello");
     axios
       .post("/preview/", data, config)
-      .then((res) => console.log(res))
+      .then((res) =>
+        this.setState({
+          data: res.data,
+          loading: false,
+        })
+      )
       .catch((err) => console.log(err));
   };
   render() {
@@ -43,9 +54,13 @@ export class Main extends Component {
             placeholder="https://example.com"
             value={this.state.url}
             onChange={this.handleChange}
+            required
           />
           <button type="submit">Submit</button>
         </form>
+
+        {this.state.loading && <Skeleton></Skeleton>}
+        {this.state.data && <h4>COntent Received</h4>}
       </section>
     );
   }

@@ -1,0 +1,48 @@
+.skeleton-card {
+  margin: 2rem auto;
+  width: 25rem;
+  height: 19rem;
+  border: 0.1rem solid #e5e5e5;
+  border-radius: 0.5rem;
+  box-shadow: 0.2rem 0.2rem 1rem rgb(194, 194, 194);
+}
+
+.skeleton-card-top {
+  height: 12rem;
+  /* background-color: rgba(200, 191, 191, 0.534); */
+  animation: loading 2s ease-in-out infinite alternate;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.skeleton-title {
+  margin: 0.7rem;
+  height: 0.7rem;
+  width: 50%;
+  border-radius: 0.2rem;
+  animation: loading 2s ease-in-out infinite alternate;
+}
+
+.skeleton-url {
+  margin: 0.7rem;
+  height: 0.5rem;
+  width: 30%;
+  border-radius: 0.2rem;
+  animation: loading 2s ease-in-out infinite alternate;
+}
+
+.skeleton-description p {
+  margin: 0.7rem;
+  height: 0.7rem;
+  position: relative;
+  border-radius: 0.2rem;
+  animation: loading 2s ease-in-out infinite alternate;
+}
+
+@keyframes loading {
+  from {
+    background-color: rgb(194, 189, 189);
+  }
+  to {
+    background-color: #e5e5e5;
+  }
+}
