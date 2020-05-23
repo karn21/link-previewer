@@ -11,6 +11,11 @@ p {
   text-align: center;
 }
 
+h5 {
+  margin: 1rem;
+  text-align: center;
+}
+
 a {
   text-decoration: none;
   color: rgb(95, 105, 255);
@@ -79,4 +84,5 @@ form button:hover {
 .error {
   color: red;
   margin: 1rem;
+  text-align: center;
 }

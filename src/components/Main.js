@@ -64,15 +64,17 @@ export class Main extends Component {
         });
         // set image
         const image = res.data["og:image"];
-        if (image.includes("http://") || image.includes("https://")) {
-          this.setState({
-            preview_img: image,
-          });
-        } else {
-          const preview_img = url + image;
-          this.setState({
-            preview_img: preview_img,
-          });
+        if (image) {
+          if (image.includes("http://") || image.includes("https://")) {
+            this.setState({
+              preview_img: image,
+            });
+          } else {
+            const preview_img = url + image;
+            this.setState({
+              preview_img: preview_img,
+            });
+          }
         }
       })
       .catch((err) => {
@@ -101,6 +103,10 @@ export class Main extends Component {
           Check how your webpage's link preview will look like on various
           platforms.
         </p>
+        <h5>
+          Note that this program may not work with sites which add meta tags
+          dynamically using javascript.
+        </h5>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="url">Enter the website url :</label>
           <input
@@ -124,7 +130,18 @@ export class Main extends Component {
             url={this.state.url}
           ></Preview>
         )}
-        {this.state.error && <div className="error">{this.state.error}</div>}
+        {this.state.error && (
+          <div className="error">
+            {" "}
+            <span
+              style={{ display: "block", fontSize: "2rem", margin: "1rem" }}
+            >
+              {" "}
+              &#10071;{" "}
+            </span>
+            {this.state.error}
+          </div>
+        )}
         <p className="text-center text-white">
           Made with <span style={{ color: "red" }}>&#10084;</span> by{" "}
           <a href="http://karan.codes" className="text-warning">
