@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./main.css";
 import Skeleton from "./skeleton/Skeleton";
+import Preview from "./Preview/Preview";
 
 axios.defaults.timeout = 8000;
 
@@ -77,7 +78,7 @@ export class Main extends Component {
         </form>
 
         {this.state.loading && <Skeleton></Skeleton>}
-        {this.state.data && <h4>Content Received</h4>}
+        {this.state.data && <Preview data={this.state.data}></Preview>}
         <p className="text-center text-white">
           Made with <span style={{ color: "red" }}>&#10084;</span> by{" "}
           <a href="http://karan.codes" className="text-warning">

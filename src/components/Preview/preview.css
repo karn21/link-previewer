@@ -1,0 +1,40 @@
+.preview-card {
+  letter-spacing: normal;
+  border-radius: 0.2rem;
+  margin: 2rem auto;
+  width: 25rem;
+  min-height: 20rem;
+  border: 0.1rem solid #e5e5e5;
+  border-radius: 0.5rem;
+  box-shadow: 0.2rem 0.2rem 1rem rgb(194, 194, 194);
+}
+
+.preview-card-top {
+  height: 16rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.preview-card-body {
+  min-height: 3rem;
+}
+
+.preview-title {
+  margin: 0.7rem;
+  height: 0.7rem;
+  word-spacing: normal;
+}
+
+.preview-url {
+  margin: 1rem 0.7rem;
+  height: 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 0.2rem;
+}
+
+.preview-description p {
+  margin: 0.7rem;
+  border-radius: 0.2rem;
+  text-align: left;
+  letter-spacing: normal;
+  word-spacing: normal;
+}

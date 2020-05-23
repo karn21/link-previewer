@@ -33,7 +33,6 @@
 .skeleton-description p {
   margin: 0.7rem;
   height: 0.7rem;
-  position: relative;
   border-radius: 0.2rem;
   animation: loading 2s ease-in-out infinite alternate;
 }
