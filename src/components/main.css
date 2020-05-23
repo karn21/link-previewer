@@ -75,3 +75,8 @@ form button:hover {
 .red:hover {
   background-color: rgb(204, 50, 50) !important;
 }
+
+.error {
+  color: red;
+  margin: 1rem;
+}

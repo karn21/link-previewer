@@ -4,7 +4,7 @@ import "./main.css";
 import Skeleton from "./skeleton/Skeleton";
 import Preview from "./Preview/Preview";
 
-axios.defaults.timeout = 8000;
+axios.defaults.timeout = 10000;
 
 export class Main extends Component {
   state = {
@@ -39,14 +39,13 @@ export class Main extends Component {
       preview_title: "",
       preview_url: "",
       preview_description: "",
+      error: "",
     });
     const base_url = this.state.url.split("://");
     var url = "";
     base_url[1]
       ? (url = "http://" + base_url[1])
       : (url = "http://" + base_url[0]);
-
-    console.log(url);
     const config = {
       headers: {
         "content-type": "application/json",
@@ -77,9 +76,19 @@ export class Main extends Component {
         }
       })
       .catch((err) => {
-        this.setState({
-          loading: false,
-        });
+        if (err.code === "ECONNABORTED") {
+          this.setState({
+            loading: false,
+            error:
+              "Timeout Error!. Please note that some sites like google.com and medium.com do not allow scraping. So it won't work.",
+          });
+        } else {
+          this.setState({
+            loading: false,
+            error: "Some error occured! Try a different url.",
+          });
+        }
+
         console.log(err);
       });
   };
@@ -115,6 +124,7 @@ export class Main extends Component {
             url={this.state.url}
           ></Preview>
         )}
+        {this.state.error && <div className="error">{this.state.error}</div>}
         <p className="text-center text-white">
           Made with <span style={{ color: "red" }}>&#10084;</span> by{" "}
           <a href="http://karan.codes" className="text-warning">
