@@ -23,6 +23,7 @@ export class Main extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({
+      data: "",
       loading: true,
     });
     const base_url = this.state.url.split("://");

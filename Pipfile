@@ -12,6 +12,8 @@ whitenoise = "*"
 beautifulsoup4 = "*"
 djangorestframework = "*"
 lxml = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.6"
