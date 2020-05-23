@@ -60,9 +60,18 @@ form button {
   outline: none;
   border: none;
   transition: all 0.3s linear;
+  margin: 0.5rem;
 }
 
 form button:hover {
   cursor: pointer;
   background-color: rgb(28, 90, 206);
+}
+
+.red {
+  background-color: rgb(238, 64, 64) !important;
+}
+
+.red:hover {
+  background-color: rgb(204, 50, 50) !important;
 }

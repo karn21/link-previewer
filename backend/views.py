@@ -30,5 +30,14 @@ class PreviewView(View):
         tags[og_property] = tag.get('content')
       if og_name:
         tags[og_name] = tag.get('content')
+    try:
+      tags["explaination"] = soup.p.string
+    except:
+      pass
+    try:
+      tags["heading"] = soup.head.title.string
+    except:
+      pass
+    
     return JsonResponse(tags)
 
