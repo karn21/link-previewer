@@ -1,14 +1,14 @@
 .skeleton-card {
   margin: 2rem auto;
   width: 25rem;
-  height: 19rem;
+  min-height: 21rem;
   border: 0.1rem solid #e5e5e5;
   border-radius: 0.5rem;
   box-shadow: 0.2rem 0.2rem 1rem rgb(194, 194, 194);
 }
 
 .skeleton-card-top {
-  height: 12rem;
+  height: 16rem;
   /* background-color: rgba(200, 191, 191, 0.534); */
   animation: loading 2s ease-in-out infinite alternate;
   border-radius: 0.5rem 0.5rem 0 0;
